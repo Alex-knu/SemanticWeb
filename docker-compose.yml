@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  netw:
+    driver: bridge
+
+services:
+
+  graphdb:
+    image: ontotext/graphdb:10.4.1
+    container_name: graphdb
+    ports:
+      - 7200:7200
+    #volumes:
+    #  - ./graphdb-data:/opt/graphdb/home    
+    environment:
+      - GDB_HEAP_SIZE=4g
+      - GDB_OPTS=-Dgraphdb.workbench.cors.enable=true
+      #- graphdb.security.auth.type=preemptive
+      #- graphdb.security.auth.master-user=<username>
+      #- graphdb.security.auth.master-password=<password>
+    networks:
+      - netw
