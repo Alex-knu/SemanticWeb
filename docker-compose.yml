@@ -21,3 +21,39 @@ services:
       #- graphdb.security.auth.master-password=<password>
     networks:
       - netw
+
+  identity_api:
+    build:
+      context: ./src/IdentityAPI
+      dockerfile: Dockerfile
+    container_name: identity_api
+    networks:
+    - netw
+    ports:
+    - "1415:80"
+    depends_on:
+    - mssql_server_idapi
+
+  web_app:
+    build:
+      context: ./src/WebAPP
+      dockerfile: Dockerfile
+    container_name: web_app
+    networks:
+    - netw
+    ports:
+    - "1416:80"
+    depends_on:
+    - identity_api
+
+  mssql_server_idapi:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_server_idapi
+    environment:
+      SA_PASSWORD: "YourPassword1!"
+      #MSSQL_SA_PASSWORD: "YourPassword1!"
+      ACCEPT_EULA: "Y"
+    networks:
+    - netw
+    #ports:
+    #  - "1433:1433"
