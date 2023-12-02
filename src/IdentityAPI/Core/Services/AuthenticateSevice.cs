@@ -57,12 +57,7 @@ namespace IdentityApi.Core.Services
 
         public async Task<string> Register(RegisterModel model)
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
-
-            if (userExists != null)
-            {
-                throw new Exception("User already exists!");
-            }
+            await IsUserExistByName(model.Username);
 
             IdentityUser user = new()
             {
@@ -71,16 +66,11 @@ namespace IdentityApi.Core.Services
                 UserName = model.Username
             };
 
+            await CreateUser(user, model.Password);
+
             if (!await _roleManager.RoleExistsAsync(UserRoles.User))
             {
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
-            }
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
-            {
-                throw new Exception("User creation failed! Please check user details and try again.");
             }
 
             if (await _roleManager.RoleExistsAsync(UserRoles.User))
@@ -93,12 +83,7 @@ namespace IdentityApi.Core.Services
 
         public async Task RegisterAdmin(RegisterModel model)
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
-
-            if (userExists != null)
-            {
-                throw new Exception("User already exists!");
-            }
+            await IsUserExistByName(model.Username);
 
             IdentityUser user = new()
             {
@@ -107,12 +92,7 @@ namespace IdentityApi.Core.Services
                 UserName = model.Username
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
-            {
-                throw new Exception("User creation failed! Please check user details and try again.");
-            }
+            await CreateUser(user, model.Password);
 
             if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
             {
@@ -130,7 +110,7 @@ namespace IdentityApi.Core.Services
             }
         }
 
-        private JwtSecurityToken GetToken(List<Claim> authClaims)
+        public JwtSecurityToken GetToken(List<Claim> authClaims)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
@@ -143,6 +123,27 @@ namespace IdentityApi.Core.Services
                 );
 
             return token;
+        }
+
+        public async Task IsUserExistByName(string? username)
+        {
+            var userExists = await _userManager.FindByNameAsync(username);
+
+            if (userExists != null)
+            {
+                throw new Exception("User already exists!");
+            }
+        }
+
+        public async Task CreateUser(IdentityUser user, string password)
+        {
+
+            var result = await _userManager.CreateAsync(user, password);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception("User creation failed! Please check user details and try again.");
+            }
         }
     }
 }
