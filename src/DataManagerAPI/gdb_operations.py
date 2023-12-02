@@ -25,6 +25,7 @@ def upload_data():
         print("Graph successfully imported.")
     else:
         print(f"Failed to import graph. Status code: {response.status_code}. Response text: {response.text}")
+    return response.status_code
 
 
 def clear_graph():
@@ -40,6 +41,7 @@ def clear_graph():
         print("Graph deleted successfully.")
     else:
         print(f"Failed to delete graph. Status code: {response.status_code}.")
+    return response.status_code
 
 
 def get_all_museums():
@@ -86,9 +88,12 @@ def get_all_museums():
         print("Query successfully executed.")
         print("Response:")
         print(response.text)
+        return text2dicts(response.text)
         #print(len(response.text))
     else:
         print(f"Failed to execute query. Status code: {response.status_code}. Response text: {response.text}")
+        return -1
+
 
 
 def get_museum(museum_url):
@@ -103,7 +108,7 @@ def get_museum(museum_url):
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX wd: <http://www.wikidata.org/entity/> 
 
-        SELECT ?museumLabel ?museumType ?region ?np ?address ?geo ?inception ?site
+        SELECT (STR(""" + museum_url + """) AS ?museum_url) ?museumLabel ?museumType ?region ?np ?address ?geo ?inception ?site
         WHERE {
             GRAPH <http://example.com/mygraph> {
                 """ + museum_url + """ a wd:Q33506 ;
@@ -137,11 +142,61 @@ def get_museum(museum_url):
         print("Query successfully executed.")
         print("Response:")
         print(response.text)
+        return text2dicts(response.text)
     else:
         print(f"Failed to execute query. Status code: {response.status_code}. Response text: {response.text}")
+        return -1
+
+
+def text2dicts(input_text):
+    lines = input_text.split('\r\n')
+    #print('\n\n', lines)
+    #print('\n\n', len(lines))
+
+    result = []
+    for i in range(1, len(lines)-1):
+        props = []
+        j=0
+        while j < len(lines[i]):
+            if lines[i][j] == '"':
+                brack = lines[i].find('"', j+1)
+                props.append(lines[i][j+1:brack])
+                j = brack + 2
+                continue
+            coma = lines[i].find(',', j)
+            if coma != -1:
+                props.append(lines[i][j:coma])
+                j = coma+1
+            else:
+                props.append(lines[i][j:-1])
+                j = len(lines[i])
+            #print(props[-1])
+
+        #print(props)
+        dict_j = {}
+        dict_j['museum_url'] = props[0]
+        dict_j['museum'] = props[1]
+        dict_j['museum_type'] = props[2]
+        dict_j['region'] = props[3]
+        dict_j['settlement'] = props[4]
+        dict_j['adress'] = props[5]
+        dict_j['geo'] = props[6]
+        dict_j['inception'] = props[7]
+        if len(props) == 9:
+            dict_j['site'] = props[8]
+        else:
+            dict_j['site'] = ''
+        result.append(dict_j)
+
+    #print(result)
+    #print(len(result))
+    return result
 
 
 #upload_data()
-#get_all_museums()
 #clear_graph()
 #get_museum("http://www.wikidata.org/entity/Q105751941")#http://www.wikidata.org/entity/Q10575194
+#response = get_all_museums()
+#print(response)
+#response = get_museum("http://www.wikidata.org/entity/Q105751941")
+#print(response)

@@ -107,7 +107,8 @@ def get_museums_from_wikidata():
 
     data = g.serialize("museums.ttl", format="turtle")
 
-    print(data)
+    print('Data successfully fetched from Wikidata.')
+    #print(data)
     #print(len(museums))
 
 #get_museums_from_wikidata()
