@@ -1,4 +1,5 @@
 import requests
+import re
 
 def upload_data():
     # upload ttl to the graphdb repository
@@ -84,16 +85,30 @@ def get_all_museums():
     response = requests.get(url, params=params)
 
     # Check the response
-    if response.status_code == 200:
-        print("Query successfully executed.")
-        print("Response:")
-        print(response.text)
-        return text2dicts(response.text)
-        #print(len(response.text))
-    else:
+    if response.status_code != 200:
         print(f"Failed to execute query. Status code: {response.status_code}. Response text: {response.text}")
         return -1
+    else:
+        print("Query successfully executed.")
+        print("Response:")
+        lines = response.text.split('\r\n')
+        # print('\n\n', lines)
+        # print('\n\n', len(lines))
 
+        result = []
+        for i in range(1, len(lines) - 1):
+            props = lines[i].split(',')
+            dict_j = {}
+            dict_j['museum_url'] = props[0]
+            dict_j['museum'] = props[1]
+            dict_j['museum_type'] = props[2]
+            dict_j['region'] = props[3]
+            dict_j['settlement'] = props[4]
+            result.append(dict_j)
+
+        # print(len(result))
+        print(result)
+        return result
 
 
 def get_museum(museum_url):
@@ -138,59 +153,62 @@ def get_museum(museum_url):
     response = requests.get(url, params=params)
 
     # Check the response
-    if response.status_code == 200:
-        print("Query successfully executed.")
-        print("Response:")
-        print(response.text)
-        return text2dicts(response.text)
-    else:
+    if response.status_code != 200:
         print(f"Failed to execute query. Status code: {response.status_code}. Response text: {response.text}")
         return -1
-
-
-def text2dicts(input_text):
-    lines = input_text.split('\r\n')
-    #print('\n\n', lines)
-    #print('\n\n', len(lines))
-
-    result = []
-    for i in range(1, len(lines)-1):
+    else:
+        print("Query successfully executed.")
+        print("Response:")
+        lines = response.text.split('\r\n')
         props = []
-        j=0
-        while j < len(lines[i]):
-            if lines[i][j] == '"':
-                brack = lines[i].find('"', j+1)
-                props.append(lines[i][j+1:brack])
+        j = 0
+        while j < len(lines[1]):
+            if lines[1][j] == '"':
+                brack = lines[1].find('"', j + 1)
+                props.append(lines[1][j + 1:brack])
                 j = brack + 2
                 continue
-            coma = lines[i].find(',', j)
+            coma = lines[1].find(',', j)
             if coma != -1:
-                props.append(lines[i][j:coma])
-                j = coma+1
+                props.append(lines[1][j:coma])
+                j = coma + 1
             else:
-                props.append(lines[i][j:-1])
-                j = len(lines[i])
-            #print(props[-1])
+                props.append(lines[1][j:-1])
+                j = len(lines[1])
+            # print(props[-1])
 
-        #print(props)
-        dict_j = {}
-        dict_j['museum_url'] = props[0]
-        dict_j['museum'] = props[1]
-        dict_j['museum_type'] = props[2]
-        dict_j['region'] = props[3]
-        dict_j['settlement'] = props[4]
-        dict_j['adress'] = props[5]
-        dict_j['geo'] = props[6]
-        dict_j['inception'] = props[7]
-        if len(props) == 9:
-            dict_j['site'] = props[8]
-        else:
-            dict_j['site'] = ''
-        result.append(dict_j)
+    dict_j = {}
+    dict_j['museum_url'] = props[0]
+    dict_j['museum'] = props[1]
+    dict_j['museum_type'] = props[2]
+    dict_j['region'] = props[3]
+    dict_j['settlement'] = props[4]
+    dict_j['adress'] = props[5]
+    #dict_j['geo'] = props[6]
+    dict_j['inception'] = props[7]
+    if len(props) == 9:
+        dict_j['site'] = props[8]
+    else:
+        dict_j['site'] = ''
 
-    #print(result)
-    #print(len(result))
-    return result
+    pattern = r"[-+]?\d*\.\d+|\d+"
+    numbers = re.findall(pattern, props[6])
+    map = ''
+    if len(numbers) == 2:
+        lon = float(numbers[0])
+        lat = float(numbers[1])
+        #print(f"lon: {lon}, lat: {lat}")
+        map = f"https://www.google.com/maps?ll={lat},{lon}.531111&q={lat},{lon}&hl=en&t=m&z=11"
+        #print(map)
+    else:
+        print("Not enough numbers found in the string")
+
+    dict_j['geo'] = '(' + str(lon) + ', ' + str(lat) + ')'
+    dict_j['map_link'] = map
+
+    print(dict_j)
+    return dict_j
+
 
 
 #upload_data()

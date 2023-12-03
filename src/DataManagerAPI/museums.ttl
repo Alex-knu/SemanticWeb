@@ -209,7 +209,7 @@ wd:Q116756614 a wd:Q33506 ;
     ex:address "вул. Головна, 33" ;
     ex:geo "Point(22.9875 48.547222222)" ;
     ex:inception "1970-01-01T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
+    ex:museumType "історичний музей" ;
     ex:np "Свалява" ;
     ex:region "Закарпатська область" .
 
@@ -261,7 +261,7 @@ wd:Q12074136 a wd:Q33506 ;
     ex:address "вул. Шевченка, 40-А" ;
     ex:geo "Point(26.829292394 50.11369812)" ;
     ex:inception "2003-12-24T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
+    ex:museumType "історичний музей" ;
     ex:np "Ізяслав" ;
     ex:region "Хмельницька область" .
 
@@ -435,7 +435,7 @@ wd:Q12082169 a wd:Q33506 ;
     ex:address "село Березова Рудка, Полтавська область, Україна" ;
     ex:geo "Point(32.250034406 50.316324246)" ;
     ex:inception "1961-01-01T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
+    ex:museumType "історичний музей" ;
     ex:np "Березова Рудка" ;
     ex:region "Полтавська область" ;
     ex:site "http://br-museum.at.ua/" .
@@ -637,9 +637,9 @@ wd:Q12100498 a wd:Q33506 ;
     ex:address "вул. Незалежності, 68" ;
     ex:geo "Point(34.529221138 49.826185504)" ;
     ex:inception "1959-01-01T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
+    ex:museumType "історичний музей" ;
     ex:np "Диканька" ;
-    ex:region "Полтавська область" .
+    ex:region "Харківська область" .
 
 wd:Q12101854 a wd:Q33506 ;
     rdfs:label "Долинський краєзнавчий музей Тетяни і Омеляна Антоновичів «Бойківщина»" ;
@@ -678,7 +678,7 @@ wd:Q12102905 a wd:Q33506 ;
     ex:address "ул. Шевченко, 31" ;
     ex:geo "Point(26.846813581 48.885006139)" ;
     ex:inception "1986-11-06T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
+    ex:museumType "історичний музей" ;
     ex:np "Дунаївці" ;
     ex:region "Хмельницька область" .
 
@@ -720,7 +720,7 @@ wd:Q12107009 a wd:Q33506 ;
     ex:address "1, вул. Перемоги, м. Золочів" ;
     ex:geo "Point(35.97 50.28333333)" ;
     ex:inception "1977-01-01T00:00:00Z" ;
-    ex:museumType "історичний музей" ;
+    ex:museumType "краєзнавчий музей" ;
     ex:np "Золочів" ;
     ex:region "Харківська область" .
 
@@ -758,7 +758,7 @@ wd:Q12110681 a wd:Q33506 ;
     ex:inception "1974-01-01T00:00:00Z" ;
     ex:museumType "художня галерея" ;
     ex:np "Кмитів" ;
-    ex:region "Київська область" .
+    ex:region "Житомирська область" .
 
 wd:Q12110818 a wd:Q33506 ;
     rdfs:label "Кобеляцький музей літератури і мистецтва" ;
@@ -924,7 +924,7 @@ wd:Q12116706 a wd:Q33506 ;
     ex:address "вул. Незалежності, 50" ;
     ex:geo "Point(25.761173545 48.442015622)" ;
     ex:inception "1982-12-23T00:00:00Z" ;
-    ex:museumType "історичний музей" ;
+    ex:museumType "краєзнавчий музей" ;
     ex:np "Кіцмань" ;
     ex:region "Чернівецька область" .
 
@@ -1187,7 +1187,7 @@ wd:Q12130480 a wd:Q33506 ;
     ex:address "вул. Шевченка, 12а" ;
     ex:geo "Point(25.002370354 48.864010396)" ;
     ex:inception "1991-01-01T00:00:00Z" ;
-    ex:museumType "історичний музей" ;
+    ex:museumType "літературний музей" ;
     ex:np "Тлумач" ;
     ex:region "Івано-Франківська область" .
 
@@ -1212,6 +1212,7 @@ wd:Q12130489 a wd:Q33506 ;
     ex:address "Майдан Січових Стрільців, 2, Трускавець, Львівська область, Україна" ;
     ex:geo "Point(23.506656 49.277639)" ;
     ex:inception "1982-12-29T00:00:00Z" ;
+    ex:museumType "історичний музей" ;
     ex:np "Трускавець" ;
     ex:region "Львівська область" .
 
@@ -1345,7 +1346,7 @@ wd:Q12130536 a wd:Q33506 ;
     ex:address "вулиця Чайковського, 13, Браїлів, Вінницька область, Україна" ;
     ex:geo "Point(28.170964134 49.103354303)" ;
     ex:inception "1979-01-01T00:00:00Z" ;
-    ex:museumType "біографічний музей" ;
+    ex:museumType "меморіальний музей" ;
     ex:np "Браїлів" ;
     ex:region "Вінницька область" .
 
@@ -1671,7 +1672,7 @@ wd:Q12145644 a wd:Q33506 ;
     ex:geo "Point(33.864017528 51.33494869)" ;
     ex:inception "1919-01-01T00:00:00Z" ;
     ex:np "Путивль" ;
-    ex:region "Харківська область" .
+    ex:region "Сумська область" .
 
 wd:Q12146454 a wd:Q33506 ;
     rdfs:label "Піщанський краєзнавчий музей" ;
@@ -1787,7 +1788,6 @@ wd:Q12166932 a wd:Q33506 ;
     ex:address "вулиця Чернишевська, 15, Харків, Україна" ;
     ex:geo "Point(36.236388888 49.998333333)" ;
     ex:inception "1996-01-01T00:00:00Z" ;
-    ex:museumType "художня галерея" ;
     ex:np "Харків" ;
     ex:region "Харківська область" ;
     ex:site "https://mgallerykharkov.wordpress.com/" .
@@ -1986,7 +1986,6 @@ wd:Q16665652 a wd:Q33506 ;
     ex:address "Биологический факультет, Шампанский переулок, 2, г. Одесса, 65058" ;
     ex:geo "Point(30.756740154 46.453434622)" ;
     ex:inception "1865-01-01T00:00:00Z" ;
-    ex:museumType "зоологічний музей" ;
     ex:np "Одеса" ;
     ex:region "Одеська область" ;
     ex:site "http://onu.edu.ua/uk/culture/museums/zoological" .
@@ -2772,7 +2771,7 @@ wd:Q30972564 a wd:Q33506 ;
     ex:address "вул. Трудова, 388, Костянтинівка, Донецька область, Україна" ;
     ex:geo "Point(37.697546083 48.535203014)" ;
     ex:inception "1967-01-01T00:00:00Z" ;
-    ex:museumType "історичний музей" ;
+    ex:museumType "краєзнавчий музей" ;
     ex:np "Костянтинівка" ;
     ex:region "Донецька область" .
 
@@ -2836,7 +2835,6 @@ wd:Q4084159 a wd:Q33506 ;
     ex:address "пр.Перемоги,14, Бердянськ" ;
     ex:geo "Point(36.79458333 46.75444444)" ;
     ex:inception "1929-01-01T00:00:00Z" ;
-    ex:museumType "краєзнавчий музей" ;
     ex:np "Бердянськ" ;
     ex:region "Запорізька область" ;
     ex:site "https://bkm.zp.ua/" .
@@ -3101,6 +3099,7 @@ wd:Q4306191 a wd:Q33506 ;
     ex:address "Україна, Донецька область,  Покровський район,  с. Сонцівка, вул. Центральна, З" ;
     ex:geo "Point(37.18918 48.05003)" ;
     ex:inception "1991-01-01T00:00:00Z" ;
+    ex:museumType "біографічний музей" ;
     ex:np "Сонцівка" ;
     ex:region "Донецька область" ;
     ex:site "https://muzey-dokm.pp.ua" .
@@ -3254,6 +3253,7 @@ wd:Q4331444 a wd:Q33506 ;
     ex:address "вулиця Ланжеронівська, 2, Одеса, Україна" ;
     ex:geo "Point(30.744566 46.484914)" ;
     ex:inception "1977-01-01T00:00:00Z" ;
+    ex:museumType "літературний музей" ;
     ex:np "Одеса" ;
     ex:region "Одеська область" ;
     ex:site "https://museum-literature.odessa.ua/" .
@@ -3330,6 +3330,7 @@ wd:Q4496331 a wd:Q33506 ;
     ex:address "ул. Тринклера, 8" ;
     ex:geo "Point(36.236553513 50.008246821)" ;
     ex:inception "1807-01-01T00:00:00Z" ;
+    ex:museumType "музей природничої історії" ;
     ex:np "Харків" ;
     ex:region "Харківська область" ;
     ex:site "http://muzei-prirody.blogspot.com/" .
@@ -3349,6 +3350,7 @@ wd:Q4497357 a wd:Q33506 ;
     ex:address "Vulytsya Soborna, 9" ;
     ex:geo "Point(32.61 46.62917)" ;
     ex:inception "1890-01-01T00:00:00Z" ;
+    ex:museumType "краєзнавчий музей" ;
     ex:np "Херсон" ;
     ex:region "Херсонська область" ;
     ex:site "http://www.hokm.ks.ua" .
