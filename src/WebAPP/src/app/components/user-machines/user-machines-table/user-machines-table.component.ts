@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { UserMachineInfoComponent } from '../user-machines-info/user-machines-info.component';
 import { UserMachineExecuteCommandComponent } from '../user-machines-execute-command/user-machines-execute-command.component';
+import { MuseumTableModel } from 'src/app/shared/models/museumTable.model';
 
 @Component({
   selector: 'app-user-machines-table',
@@ -11,34 +12,64 @@ import { UserMachineExecuteCommandComponent } from '../user-machines-execute-com
 })
 
 export class UserMachineTableComponent {
-  machines: any[] = [];
+  museums: MuseumTableModel[];
   ref: DynamicDialogRef;
   loading: boolean = false;
   machine: any;
+  ukraine_regions = [
+    'Вінницька область',
+    'Волинська область',
+    'Дніпропетровська область',
+    'Донецька область',
+    'Житомирська область',
+    'Закарпатська область',
+    'Запорізька область',
+    'Івано-Франківська область',
+    'Київська область',
+    'Кіровоградська область',
+    'Луганська область',
+    'Львівська область',
+    'Миколаївська область',
+    'Одеська область',
+    'Полтавська область',
+    'Рівненська область',
+    'Сумська область',
+    'Тернопільська область',
+    'Харківська область',
+    'Херсонська область',
+    'Хмельницька область',
+    'Черкаська область',
+    'Чернівецька область',
+    'Чернігівська область',
+    'м. Київ'
+  ]
 
   constructor(
     private messageService: MessageService,
     private dialogService: DialogService) { }
 
   ngOnInit() {
-    this.machines = [
+    this.museums = [
       {
-        name: 'Home',
-        host: '10.10.1.152',
-        port: 22,
-        changeValues: [
-          {
-            command: 'ls',
-            time: '01.01.2000',
-          }
-        ]
+          museum: "Ладомирія",
+          museum_type: "",
+          museum_url: "http://www.wikidata.org/entity/Q111846032",
+          region: "Рівненська область",
+          settlement: "Радивилів"
+      },
+      {
+          museum: "Зміївський краєзнавчий музей",
+          museum_type: "краєзнавчий музей",
+          museum_url: "http://www.wikidata.org/entity/Q111894861",
+          region: "Харківська область",
+          settlement: "Зміїв"
       }
     ];
   }
 
-  onClick(event: any) {
-    event.changeValues = this.machines[0].changeValues;
-  }
+  // onClick(event: any) {
+  //   event.changeValues = this.machines[0].changeValues;
+  // }
 
   editMachine(machine: any) {
     this.machine = machine;

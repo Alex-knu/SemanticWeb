@@ -41,7 +41,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Машини',
             icon: 'pi pi-fw pi-desktop',
-            routerLink: ['/user-machines/user-machines-table'],
+            routerLink: ['/user-machines/museum-table'],
             visible: true
             //visible: this.isVisible(this.admin)
           }
