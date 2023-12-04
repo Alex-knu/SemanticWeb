@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { UserInfoModel } from 'src/app/shared/models/userInfo.model';
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/shared/services/api/user.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { MuseumModel } from 'src/app/shared/models/museum.model';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-user-table',
@@ -17,8 +18,15 @@ import { MuseumModel } from 'src/app/shared/models/museum.model';
 export class UserTableComponent {
   submitted: boolean;
   museum: MuseumModel;
+  museum_url: string;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.museum_url = params['museum_url'];
+      console.log(this.museum_url);
+    });
     this.museum =
     {
       adress: "с. Хоросно, Львівська область, Україна",
@@ -33,4 +41,17 @@ export class UserTableComponent {
       site: ""
     };
   }
+
+  openWikiDataUrl(): void {
+    (window as any).open(this.museum.museum_url, "_blank");
+  }
+
+  openWebSiteUrl(): void {
+    (window as any).open(this.museum.site, "_blank");
+  }
+
+  openMapUrl(): void {
+    (window as any).open(this.museum.map_link, "_blank");
+  }
 }
+

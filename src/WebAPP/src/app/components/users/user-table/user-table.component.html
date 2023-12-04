@@ -1,41 +1,61 @@
 <div class="card">
-  <p>
-    {{ museum.adress }}
-  </p>
-  <p-divider></p-divider>
-  <p>
-    {{ museum.geo }}
-  </p>
-  <p-divider></p-divider>
-  <p>
-    {{ museum.inception }}
-  </p>
-  <p-divider></p-divider>
-  <p>
-    {{ museum.map_link }}
-  </p>
+  <h3>Назва</h3>
   <p-divider></p-divider>
   <p>
     {{ museum.museum }}
   </p>
   <p-divider></p-divider>
+  <h3>Тип</h3>
+  <p-divider></p-divider>
   <p>
     {{ museum.museum_type }}
   </p>
   <p-divider></p-divider>
-  <p>
-    {{ museum.museum_url }}
-  </p>
+  <h3>Регіон</h3>
   <p-divider></p-divider>
   <p>
     {{ museum.region }}
   </p>
   <p-divider></p-divider>
+  <h3>Поселення</h3>
+  <p-divider></p-divider>
   <p>
     {{ museum.settlement }}
   </p>
   <p-divider></p-divider>
+  <h3>Адреса</h3>
+  <p-divider></p-divider>
   <p>
+    {{ museum.adress }}
+  </p>
+  <p-divider></p-divider>
+  <h3>Знайти на мапі</h3>
+  <p-divider></p-divider>
+  <p (click)="openMapUrl()">
+    {{ museum.map_link }}
+  </p>
+  <p-divider></p-divider>
+  <h3>Координати</h3>
+  <p-divider></p-divider>
+  <p>
+    {{ museum.geo }}
+  </p>
+  <p-divider></p-divider>
+  <h3>Заснування</h3>
+  <p-divider></p-divider>
+  <p>
+    {{ museum.inception }}
+  </p>
+  <p-divider></p-divider>
+  <h3>Посилання на WikiData</h3>
+  <p-divider></p-divider>
+  <p (click)="openWikiDataUrl()">
+    {{ museum.museum_url }}
+  </p>
+  <p-divider></p-divider>
+  <h3>Прейти на сайт музею</h3>
+  <p-divider></p-divider>
+  <p (click)="openWebSiteUrl()">
     {{ museum.site }}
   </p>
 </div>
