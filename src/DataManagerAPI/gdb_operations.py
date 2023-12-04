@@ -4,7 +4,7 @@ import re
 def upload_data():
     # upload ttl to the graphdb repository
     # Define the URL of the GraphDB repository
-    url = "http://localhost:7200/repositories/first/rdf-graphs/service?graph=http://example.com/mygraph"
+    url = "http://graphdb:7200/repositories/first/rdf-graphs/service?graph=http://example.com/mygraph"
 
     # Define the path to the TTL file
     ttl_file_path = "museums.ttl"
@@ -31,8 +31,8 @@ def upload_data():
 
 def clear_graph():
     # Construct the URL for the request
-    #url = "http://localhost:7200/repositories/first/rdf-graphs/service?default"
-    url = "http://localhost:7200/repositories/first/rdf-graphs/service?graph=http://example.com/mygraph"
+    #url = "http://graphdb:7200/repositories/first/rdf-graphs/service?default"
+    url = "http://graphdb:7200/repositories/first/rdf-graphs/service?graph=http://example.com/mygraph"
 
     # Send the DELETE request
     response = requests.delete(url)
@@ -47,7 +47,7 @@ def clear_graph():
 
 def get_all_museums():
     # Define the URL of the GraphDB repository
-    url = "http://localhost:7200/repositories/first"
+    url = "http://graphdb:7200/repositories/first"
 
     # Define the SPARQL query
     query = """
@@ -113,7 +113,7 @@ def get_all_museums():
 
 def get_museum(museum_url):
     # Define the URL of the GraphDB repository
-    url = "http://localhost:7200/repositories/first"
+    url = "http://graphdb:7200/repositories/first"
 
     museum_url = "<" + museum_url + ">"
 
