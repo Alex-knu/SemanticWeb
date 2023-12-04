@@ -23,39 +23,14 @@ export class AppMenuComponent implements OnInit {
   ngOnInit() {
     this.model = [
       {
-        label: 'Головна',
-        visible: true,
-        items: [
-          {
-            label: 'Головна',
-            icon: 'pi pi-fw pi-home',
-            routerLink: ['/']
-          }
-        ]
-      },
-      {
-        label: 'Машини',
+        label: 'Музеї',
         visible: true,
         //visible: this.isVisible(this.admin),
         items: [
           {
-            label: 'Машини',
+            label: 'Музеї',
             icon: 'pi pi-fw pi-desktop',
-            routerLink: ['/user-machines/user-machines-table'],
-            visible: true
-            //visible: this.isVisible(this.admin)
-          }
-        ]
-      },
-      {
-        label: 'Користувачі',
-        visible: true,
-        //visible: this.isVisible(this.admin),
-        items: [
-          {
-            label: 'Користувачі',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/user/user-table'],
+            routerLink: ['/user-machines/museum-table'],
             visible: true
             //visible: this.isVisible(this.admin)
           }

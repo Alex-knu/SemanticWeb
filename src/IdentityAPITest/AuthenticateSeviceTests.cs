@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 using IdentityApi.Core.Services;
 using IdentityApi.Core.Models;
 using Microsoft.AspNetCore.Identity;
-using IdentityApi.Core.DTO;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System;
 using System.Linq;
-using System.Threading;
 
 namespace IdentityAPITest;
 

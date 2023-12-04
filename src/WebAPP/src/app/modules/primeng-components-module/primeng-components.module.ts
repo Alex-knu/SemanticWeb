@@ -54,6 +54,7 @@ import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CommonModule } from '@angular/common';
+import { DividerModule } from 'primeng/divider';
 
 
 const primeNgModules = [
@@ -108,7 +109,8 @@ const primeNgModules = [
   TabViewModule,
   MenubarModule,
   SlideMenuModule,
-  FormsModule
+  FormsModule,
+  DividerModule
 ];
 @NgModule({
   imports: [

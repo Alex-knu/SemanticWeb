@@ -1,70 +1,34 @@
 <div class="card">
-  <p-table [value]="machines" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
-    sortMode="single" sortField="date" [sortOrder]="-1" currentPageReportTemplate="Показати з {first} по {last} із {totalRecords}
-           записів" [rowsPerPageOptions]="[10,25,50]" dataKey="id">
-
+  <p-table #dt1 [value]="museums" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+    responsiveLayout="scroll" sortMode="single" sortField="date" [sortOrder]="-1" currentPageReportTemplate="Показати з {first} по {last} із {totalRecords}
+           записів" [rowsPerPageOptions]="[10,25,50]" dataKey="id"
+    [globalFilterFields]="['museum','museum_type','region','settlement']">
     <ng-template pTemplate="caption">
-      <div class="p-d-flex p-ai-center p-jc-between">
-        <button pButton pRipple label="Нова" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+      <div class="flex">
+        <button pButton label="Очистити" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+            placeholder="Search keyword" />
+        </span>
       </div>
     </ng-template>
 
     <ng-template pTemplate="header">
       <tr>
-        <th style="width: 3rem"></th>
-        <th pSortableColumn="id">Ім'я<p-sortIcon field="id"></p-sortIcon></th>
-        <th pSortableColumn="tableName">Хост<p-sortIcon field="tableName"></p-sortIcon></th>
-        <th pSortableColumn="rowId">Порт<p-sortIcon field="rowId"></p-sortIcon></th>
-        <th></th>
+        <th pSortableColumn="id">Назва<p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="tableName">Тип<p-sortIcon field="tableName"></p-sortIcon></th>
+        <th pSortableColumn="rowId">Облать<p-sortIcon field="rowId"></p-sortIcon></th>
+        <th pSortableColumn="rowId">Населений пункт<p-sortIcon field="rowId"></p-sortIcon></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-machine let-expanded="expanded">
+    <ng-template pTemplate="body" let-museum let-expanded="expanded">
       <tr>
-        <td>
-          <button (click)="onClick(machine)" type="button" pButton pRipple [pRowToggler]="machine" class="p-button-text p-button-rounded
-            p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-        </td>
-        <td>{{machine.name}}</td>
-        <td>{{machine.host}}</td>
-        <td>{{machine.port}}</td>
-        <td>
-          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
-            (click)="editMachine(machine)"></button>
-          <!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-            (click)="deleteApplication(application)" *ngIf="isVisible(user)"></button> -->
-          <button pButton pRipple icon="pi pi-cog" class="p-button-rounded p-button-help p-mr-2"
-            (click)="executeCommand(machine)"></button>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="rowexpansion" let-machine>
-      <tr>
-        <td colspan="6">
-          <div class="p-p-3">
-            <p-table [value]="machine.changeValues" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-              responsiveLayout="scroll" sortMode="single" sortField="date" [sortOrder]="-1" currentPageReportTemplate="Показати з {first} по {last} із {totalRecords}
-            записів" [rowsPerPageOptions]="[10,25,50]" dataKey="id">
-              <ng-template pTemplate="header">
-      <tr>
-        <th>Команда</th>
-        <th>Час</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-changeValue>
-      <tr>
-        <td>{{changeValue.command}}</td>
-        <td>{{changeValue.time}}</td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="4" id="emptymessage">Дані відсутні</td>
+        <td (click)="openFullInfo(museum)">{{museum.museum}}</td>
+        <td>{{museum.museum_type}}</td>
+        <td>{{museum.region}}</td>
+        <td>{{museum.settlement}}</td>
       </tr>
     </ng-template>
   </p-table>
-</div>
-</td>
-</tr>
-</ng-template>
-</p-table>
 </div>
