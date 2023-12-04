@@ -1,18 +1,20 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import os
 import gdb_operations as gdb
 import  wikidata_museums as wm
 
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/museums', methods=['GET'])
+@app.route('/api/museum/collection', methods=['GET'])
 def get_museums():
     response = gdb.get_all_museums()
     return jsonify(response)
 
 
-@app.route('/museum', methods=['GET']) #/<string:museum_url>
+@app.route('/api/museum', methods=['POST']) #/<string:museum_url>
 def get_museum():
     #museum_url = request.args.get('museum_url')
 
@@ -23,7 +25,7 @@ def get_museum():
     return jsonify(response)
 
 
-@app.route('/synchronize', methods=['POST'])
+@app.route('/api/synchronize', methods=['POST'])
 def add_book():
     status_code1 = gdb.clear_graph()
     if status_code1 != 204:

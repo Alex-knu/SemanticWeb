@@ -3,3 +3,4 @@ regex
 sparqlwrapper
 rdflib
 flask
+flask-cors
