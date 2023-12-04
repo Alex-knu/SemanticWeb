@@ -5,6 +5,7 @@ import { UserService } from "./api/user.service";
 import { RoleService } from "./api/role.service";
 import { MuseumService } from "./api/museum.service";
 import { MuseumTableService } from "./api/museumTable.service";
+import { SynhronizeService } from "./api/synhronize.service";
 
 export const services = [
   HttpService,
@@ -13,5 +14,6 @@ export const services = [
   UserService,
   RoleService,
   MuseumService,
-  MuseumTableService
+  MuseumTableService,
+  SynhronizeService
 ]

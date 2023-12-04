@@ -35,6 +35,20 @@ export class AppMenuComponent implements OnInit {
             //visible: this.isVisible(this.admin)
           }
         ]
+      },
+      {
+        label: 'Адміністрування',
+        visible: true,
+        //visible: this.isVisible(this.admin),
+        items: [
+          {
+            label: 'Синхронізація',
+            icon: 'pi pi-fw pi-desktop',
+            routerLink: ['/user/synhronize'],
+            visible: true
+            //visible: this.isVisible(this.admin)
+          }
+        ]
       }
     ];
   }

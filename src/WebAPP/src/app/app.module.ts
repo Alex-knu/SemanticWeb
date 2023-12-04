@@ -17,6 +17,7 @@ import { UserInfoComponent } from './components/users/user-info/user-info.compon
 import { UserMachineTableComponent } from './components/user-machines/user-machines-table/user-machines-table.component';
 import { UserMachineInfoComponent } from './components/user-machines/user-machines-info/user-machines-info.component';
 import { UserMachineExecuteCommandComponent } from './components/user-machines/user-machines-execute-command/user-machines-execute-command.component';
+import { SynhronizeComponent } from './components/users/synchronize/user-table.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserMachineExecuteCommandComponent } from './components/user-machines/u
     LoginComponent,
     RegisterComponent,
     UserTableComponent,
+    SynhronizeComponent,
     UserInfoComponent,
     UserMachineTableComponent,
     UserMachineInfoComponent,
