@@ -6,13 +6,13 @@ import  wikidata_museums as wm
 app = Flask(__name__)
 
 
-@app.route('/museums', methods=['GET'])
+@app.route('/museum/collection', methods=['GET'])
 def get_museums():
     response = gdb.get_all_museums()
     return jsonify(response)
 
 
-@app.route('/museum', methods=['GET']) #/<string:museum_url>
+@app.route('/museum', methods=['POST']) #/<string:museum_url>
 def get_museum():
     #museum_url = request.args.get('museum_url')
 

@@ -7,6 +7,7 @@ import { UserMachineExecuteCommandComponent } from '../user-machines-execute-com
 import { MuseumTableModel } from 'src/app/shared/models/museumTable.model';
 import { MuseumModel } from 'src/app/shared/models/museum.model';
 import { Router } from '@angular/router';
+import { MuseumTableService } from 'src/app/shared/services/api/museumTable.service';
 
 @Component({
   selector: 'app-user-machines-table',
@@ -23,25 +24,14 @@ export class UserMachineTableComponent {
   constructor(
     private messageService: MessageService,
     private dialogService: DialogService,
-    private router: Router) { }
+    private router: Router,
+    private museumTableService: MuseumTableService) { }
 
   ngOnInit() {
-    this.museums = [
-      {
-        museum: "Ладомирія",
-        museum_type: "",
-        museum_url: "http://www.wikidata.org/entity/Q111846032",
-        region: "Рівненська область",
-        settlement: "Радивилів"
-      },
-      {
-        museum: "Зміївський краєзнавчий музей",
-        museum_type: "краєзнавчий музей",
-        museum_url: "http://www.wikidata.org/entity/Q111894861",
-        region: "Харківська область",
-        settlement: "Зміїв"
-      }
-    ];
+    this.museumTableService.collection.getAll().subscribe(
+      museums => {
+        this.museums = museums;
+      });
   }
 
 

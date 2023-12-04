@@ -53,6 +53,8 @@ services:
     container_name: data_manager_api
     networks:
     - netw
+    ports:
+    - "1417:7777"
     depends_on:
     - graphdb
 

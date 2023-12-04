@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { MuseumModel } from 'src/app/shared/models/museum.model';
 import { DOCUMENT } from '@angular/common';
+import { MuseumService } from 'src/app/shared/services/api/museum.service';
 
 @Component({
   selector: 'app-user-table',
@@ -20,26 +21,16 @@ export class UserTableComponent {
   museum: MuseumModel;
   museum_url: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private museumService: MuseumService) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.museum_url = params['museum_url'];
-      console.log(this.museum_url);
-    });
-    this.museum =
-    {
-      adress: "с. Хоросно, Львівська область, Україна",
-      geo: "(23.985277777, 49.654722222)",
-      inception: "2020-11-01T00:00:00Z",
-      map_link: "https://www.google.com/maps?ll=49.654722222,23.985277777.531111&q=49.654722222,23.985277777&hl=en&t=m&z=11",
-      museum: "Музей загиблих літаків",
-      museum_type: "",
-      museum_url: "http://www.wikidata.org/entity/Q105751941",
-      region: "Львівська область",
-      settlement: "Хоросно",
-      site: ""
-    };
+      this.museumService.single.create({"museum_url": params['museum_url']}).subscribe(
+        museum => {
+          this.museum = museum;
+        });
+      });
   }
 
   openWikiDataUrl(): void {
