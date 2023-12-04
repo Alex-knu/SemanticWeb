@@ -46,14 +46,24 @@ services:
     depends_on:
     - identity_api
 
+  data_manager_api:
+    build:
+      context: ./src/DataManagerAPI
+      dockerfile: Dockerfile
+    container_name: data_manager_api
+    networks:
+    - netw
+    depends_on:
+    - graphdb
+
   mssql_server_idapi:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql_server_idapi
     environment:
       SA_PASSWORD: "YourPassword1!"
-      #MSSQL_SA_PASSWORD: "YourPassword1!"
       ACCEPT_EULA: "Y"
     networks:
     - netw
+    # for local debugging
     #ports:
     #  - "1433:1433"

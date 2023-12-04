@@ -42,5 +42,4 @@ def add_book():
 
 
 if __name__ == '__main__':
-    server_port = os.environ.get('PORT', '7777')
-    app.run(debug=True, port=server_port)
+    app.run(debug=True, host="0.0.0.0", port=7777)
