@@ -3,7 +3,7 @@
 import requests
 
 # Define the URL of the GraphDB server
-url = "http://localhost:7200/rest/repositories"
+url = "http://graphdb:7200/rest/repositories"
 
 # Define the headers for the request
 headers = {
