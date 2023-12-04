@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { UserMachineInfoComponent } from '../user-machines-info/user-machines-info.component';
 import { UserMachineExecuteCommandComponent } from '../user-machines-execute-command/user-machines-execute-command.component';
@@ -14,7 +15,7 @@ import { MuseumTableModel } from 'src/app/shared/models/museumTable.model';
 export class UserMachineTableComponent {
   museums: MuseumTableModel[];
   ref: DynamicDialogRef;
-  loading: boolean = false;
+  loading: boolean = true;
   machine: any;
   ukraine_regions = [
     'Вінницька область',
@@ -66,6 +67,12 @@ export class UserMachineTableComponent {
       }
     ];
   }
+
+
+
+  clear(table: Table) {
+    table.clear();
+}
 
   // onClick(event: any) {
   //   event.changeValues = this.machines[0].changeValues;
@@ -128,4 +135,5 @@ export class UserMachineTableComponent {
     //   }
     // });
   }
+
 }
